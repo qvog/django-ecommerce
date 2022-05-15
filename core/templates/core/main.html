@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="border-b border-gray-300">
+        <div class="max-w-6xl mx-auto py-2 px-6 xl:px-0 flex items-center justify-between">
+            <div class="menu-left flex items-center space-x-6">
+                <a href="{% url 'frontpage' %}" class="py-4 text-lg text-black-800 font-semibold">Viva Sonya</a>
+                <ul class="flex items-center space-x-4">
+                    <li><a href="{% url 'shop' %}" class="text-black hover:text-gray-600">Магазин</a></li>
+                    <li><a href="#" class="text-black hover:text-gray-600">О нас</a></li>
+                </ul>
+
+            </div>
+
+            <div class="menu-right flex items-center space-x-4">
+                <a href="#" class="text-black hover:text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                    </svg>
+                </a>
+
+                <a href="#" class="text-black hover:text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class ="bg-gray-100">
+        <div class="max-w-6xl mx-auto py-10 px-6 xl:px-0 md:flex justify-between">
+            <div class="footer-left mb-12 md:mb-0">
+                <h2 class="mb-5 uppercase text-lg">О нас</h2>
+
+                <p class="text-gray-700">Мы официальные представители крупнейшего производителя постельного белья в России: Viva Home Textile Ситрейд!
+
+                    Большой выбор оригинальных расцветок, гибкая ценовая политика, качественные материалы, устойчивые к многократным стиркам. </p>
+            </div>
+
+            <div class="footer-right">
+                <h2 class="mb-5 uppercase text-lg">Социальные сети</h2>
+
+                <ul class="space-y-2">
+                    <li><a href="https://vk.com/sonya_textile" class="text-black hover:text-gray-600">Вконтакте</a></li>
+                    <li><a href="https://vk.com/sonya_textile" class="text-black hover:text-gray-600">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
