@@ -10,13 +10,19 @@
         <h1 class="text-2xl">{{ product.name }}</h1>
 
         <p class="mt-1 text-gray-400">${{ product.get_display_price }}</p>
-        {%if product.discription %}
+        {% if product.discription %}
             <p class="mt-6 text-gray-700">
                 {{ product.discription }}
             </p>
         {% endif %}
 
-        <a href="#" class="mt-6 inline-block px-8 py-4 rounded-xl bg-gray-500 text-white hover:bg-gray-800">
+        <a 
+            href="#" 
+            class="mt-6 inline-block px-8 py-4 rounded-xl bg-gray-500 text-white hover:bg-gray-800"
+            hx-get="{% url 'add_to_cart' product.id %}"
+            hx-target="#menu-cart-button"
+            hx-swap="outerHTML"
+        >
             Добавить в корзину
         </a>
     </div>
