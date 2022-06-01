@@ -52,18 +52,15 @@
                     <input name="phone" type="phone" class="w-full p-5 rounded-xl">
                 </div>
             </div>
-
-            <div class="mb-6 p-6 bg-gray-100 rounded-xl" id="errors">
-            </div>
         </div>
     </div>
 
-    <div class="summary w-full md:w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
-        <h2 class="uppercase text-lg mb-5">Общая стоимость: </h2>
+    <div class="summary w-full md:w-1/4 p-6 bg-gray-100 rounded-xl mt-14">
+        <h2 class="uppercase text-lg mb-5">Общая стоимость:</h2>
 
         <div class="mb-6 flex justify-between">
             <span class="font-semibold">Всего</span>
-            <span>3599 руб</span>
+            <span>{{ cart.get_total_cost }} руб</span>
         </div>
 
         <a href="#" class="inline-block px-8 py-4 rounded-xl bg-gray-800 hover:bg-black text-white">Потвердить оплату</a>

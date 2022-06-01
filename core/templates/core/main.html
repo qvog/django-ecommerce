@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>{% block title %}{% endblock %} | Viva Sonya</title>
 </head>
     <body>
         <nav class="border-b border-gray-300">
             <div class="max-w-6xl mx-auto py-2 px-6 xl:px-0 flex items-center justify-between">
                 <div class="menu-left flex items-center space-x-6">
                     <a href="{% url 'frontpage' %}" class="py-4 text-lg text-black-800 font-semibold">Viva Sonya</a>
+
                     <ul class="flex items-center space-x-4">
                         <li><a href="{% url 'shop' %}" class="text-black hover:text-gray-600">Магазин</a></li>
                         <li><a href="#" class="text-black hover:text-gray-600">О нас</a></li> 
