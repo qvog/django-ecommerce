@@ -1,0 +1,73 @@
+{% extends 'core/main.html' %}
+{% block content %}
+
+<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
+    <div class="products w-full lg:w-3/4">
+        <h1 class="mb-5 text-3xl">Оформление</h1>
+
+        <div class="w-full md:pr-6">
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
+                <h2 class="mb-5 uppercase text-lg">Информация о заказе</h2>
+
+                <div class="flex space-x-6">
+                    <div class="w-1/2 mb-4">
+                        <label class="inline-block mb-2">Имя</label>
+                        <input name="first_name" type="text" class="w-full p-5 rounded-xl" value="{{ request.user.first_name }}">
+                    </div>
+
+                    <div class="w-1/2 mb-4">
+                        <label class="inline-block mb-2">Фамилия</label>
+                        <input name="last_name" type="text" class="w-full p-5 rounded-xl" value="{{ request.user.last_name }}">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="inline-block mb-2">Адресс</label>
+                    <input name="address" type="text" class="w-full p-5 rounded-xl">
+                </div>
+
+                <div class="flex space-x-6">
+                    <div class="w-1/2 mb-4">
+                        <label class="inline-block mb-2">Почтовый индекс</label>
+                        <input name="zipcode" type="text" class="w-full p-5 rounded-xl">
+                    </div>
+
+                    <div class="w-1/2 mb-4">
+                        <label class="inline-block mb-2">Город/</label>
+                        <input name="place" type="text" class="w-full p-5 rounded-xl">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
+                <h2 class="mb-5 uppercase text-lg">Контактная информация</h2>
+
+                <div class="mb-4">
+                    <label class="inline-block mb-2">E-mail</label>
+                    <input name="email" type="email" class="w-full p-5 rounded-xl" value="{{ request.user.email }}">
+                </div>
+
+                <div class="mb-4">
+                    <label class="inline-block mb-2">Телефон</label>
+                    <input name="phone" type="phone" class="w-full p-5 rounded-xl">
+                </div>
+            </div>
+
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl" id="errors">
+            </div>
+        </div>
+    </div>
+
+    <div class="summary w-full md:w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
+        <h2 class="uppercase text-lg mb-5">Общая стоимость: </h2>
+
+        <div class="mb-6 flex justify-between">
+            <span class="font-semibold">Всего</span>
+            <span>3599 руб</span>
+        </div>
+
+        <a href="#" class="inline-block px-8 py-4 rounded-xl bg-gray-800 hover:bg-black text-white">Потвердить оплату</a>
+    </div>
+</div>
+
+{% endblock %}
