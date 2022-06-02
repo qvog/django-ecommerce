@@ -1,5 +1,8 @@
+from django import forms
 from django.db import models
 from django.core.files import File
+from django import forms
+from django.forms import ModelForm
 
 from PIL import Image
 from io import BytesIO
@@ -16,6 +19,7 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
+
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
@@ -24,7 +28,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
-
+    
     def get_display_price(self):
         return self.price
 
@@ -51,7 +55,7 @@ class Product(models.Model):
         thumbnail = File(thumb_io, name=image.name)
 
         return thumbnail
-
+    
 
     class Meta:
         ordering = ('-created_at', )
@@ -59,4 +63,27 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class ProductSize(models.Model):
     
+    CHOOSE_SIZE = (
+    ('Extra Small', 'XS'),
+    ('Small', 'S'),
+    ('Medium', 'M'),
+    ('Large', 'L'),
+    ('Extra Large', 'XL'),
+    ('Double Large', 'XXL'),
+    ('Triple Large', 'XXXL'),
+    )
+
+    product = models.ForeignKey(Product, related_name='sizes', on_delete=models.CASCADE)
+    size = models.CharField(max_length=120, choices=CHOOSE_SIZE)
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.size
+
+
+
+    
+
+

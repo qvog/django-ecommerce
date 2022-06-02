@@ -20,6 +20,13 @@
                 {{ product.discription }}
             </p>
         {% endif %}
+        
+        <h2>Размер</h2>
+            <select class="form-control">
+                {% for item in productsize.size %}
+                    <option value="{{ item.id }}">{{ item }}</option>
+                {% endfor %} 
+            </select>
 
         <a 
             href="#" 

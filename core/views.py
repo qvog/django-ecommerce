@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, redirect
 
@@ -26,8 +27,9 @@ def signup(request):
 
     return render(request, 'core/signup.html', {'form': form})
 
-def login_old(request):
-    return render(request, 'core/login.html')
+@login_required
+def myaccount(request):
+    return render(request, 'core/myaccount.html')
 
 def shop(request):
     categories = Category.objects.all()
@@ -41,7 +43,7 @@ def shop(request):
     query = request.GET.get('query', '')
     
     if query:
-        products = products.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        products = products.filter(Q(name__icontains=query) | Q(discription__icontains=query))
 
     context = {
         'categories': categories,

@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>{% block title %}{% endblock %} | Viva Sonya</title>
+    <title>{% block title %}{% endblock %} | Nika </title>
 </head>
     <body>
         <nav class="border-b border-gray-300">
             <div class="max-w-6xl mx-auto py-2 px-6 xl:px-0 flex items-center justify-between">
                 <div class="menu-left flex items-center space-x-6">
-                    <a href="{% url 'frontpage' %}" class="py-4 text-lg text-black-800 font-semibold">Viva Sonya</a>
+                    <a href="{% url 'frontpage' %}" class="py-4 text-lg text-black-800 font-semibold"> Nika </a>
 
                     <ul class="flex items-center space-x-4">
                         <li><a href="{% url 'shop' %}" class="text-black hover:text-gray-600">Магазин</a></li>
@@ -29,7 +29,7 @@
 
                 <div class="menu-right flex items-center space-x-4">
                         {% if request.user.is_authenticated %}
-                        <a href="#" class="text-black hover:text-gray-600">
+                        <a href="{% url 'myaccount' %}" class="text-black hover:text-gray-600">
                             <h1 class="text-black hover:text-gray-600">{{ user.get_username }}</h1>
                         </a>
                         {% else %}
@@ -54,20 +54,26 @@
         <footer class ="bg-gray-100">
             <div class="max-w-6xl mx-auto py-10 px-6 xl:px-0 md:flex justify-between">
                 <div class="footer-left mb-12 md:mb-0">
-                    <h2 class="mb-5 uppercase text-lg">О нас</h2>
+                    <h2 class="mb-2 uppercase text-lg">Краснодар</h2>
 
-                    <p class="text-gray-700">Мы официальные представители крупнейшего производителя постельного белья в России: Viva Home Textile Ситрейд!
+                    <p class="text-gray-700">
+                        <li>Адрес: ул. Шевченко, 150/1</li>
+                        <li>Телефон: +7 861 239-03-79, +7 861 239-03-92</li>
+                        <li>E-mail: nika-calze@mail.ru</li>
+                    </p>
 
-                        Большой выбор оригинальных расцветок, гибкая ценовая политика, качественные материалы, устойчивые к многократным стиркам. </p>
                 </div>
 
-                <div class="footer-right">
-                    <h2 class="mb-5 uppercase text-lg">Социальные сети</h2>
+                <div class="footer-right mb-12 md:mb-0">
 
-                    <ul class="space-y-2">
-                        <li><a href="https://vk.com/sonya_textile" class="text-black hover:text-gray-600">Вконтакте</a></li>
-                        <li><a href="https://vk.com/sonya_textile" class="text-black hover:text-gray-600">Instagram</a></li>
-                    </ul>
+                    <h2 class="mb-2 uppercase text-lg">Пятигорск</h2>
+
+                    <p class="text-gray-700">
+                        <li>Адрес: пос. Горячеводский, ул. Георгиевская, 70</li>
+                        <li>Телефон: +7 8793 31-20-61, +7 8793 31-19-60</li>
+                        <li>E-mail: nika26bk@mail.ru</li>
+                    </p>
+
                 </div>
             </div>
         </footer>
