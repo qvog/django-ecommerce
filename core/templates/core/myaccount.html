@@ -10,8 +10,13 @@
     <div class="mb-6">
         <strong> Логин: </strong> {{ request.user.username }} <br>
         <strong> E-mail: </strong> {{ request.user.email }} <br>
+        <strong> Имя: </strong> {{ request.user.first_name }} <br>
+        <strong> Фамилия: </strong> {{ request.user.last_name }} <br>
     </div>
 
+    <a href={% url 'edit_myaccount' %}>
+        <button class="py-4 px-6 rounded-xl text-white bg-gray-900 hover:bg-black ">Редактировать</button>
+    </a>
     <hr>
 
     <h2 class="my-6 text-xl">Мои заказы</h2>

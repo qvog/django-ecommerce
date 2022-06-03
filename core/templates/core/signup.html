@@ -7,6 +7,15 @@
 
         <form method="post" action="." class="space-y-3">
             {% csrf_token %}
+            <div>
+                <label>Имя</label>
+                <input type="text" name="first_name" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+            </div>
+
+            <div>
+                <label>Фамилия</label>
+                <input type="text" name="last_name" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+            </div>
 
             <div>
                 <label>Логин</label>
