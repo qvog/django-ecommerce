@@ -11,11 +11,14 @@
         <nav class="border-b border-gray-300">
             <div class="max-w-6xl mx-auto py-2 px-6 xl:px-0 flex items-center justify-between">
                 <div class="menu-left flex items-center space-x-6">
-                    <a href="{% url 'frontpage' %}" class="py-4 text-lg text-black-800 font-semibold"> Nika </a>
+
+                    <a href="{% url 'frontpage' %}" class="py-4 text-lg text-black-800 font-semibold">
+                        <img src="https://nika-calze.ru/img/public/logo-dark.png" width="125" height="50" alt="NIKA">
+                    </a>
 
                     <ul class="flex items-center space-x-4">
                         <li><a href="{% url 'shop' %}" class="text-black hover:text-gray-600">Магазин</a></li>
-                        <li><a href="#" class="text-black hover:text-gray-600">О нас</a></li> 
+                        <li><a href="{% url 'aboutus'%}" class="text-black hover:text-gray-600">О нас</a></li> 
 
                         {% if request.user.is_authenticated %}
                         <li><a href="{% url 'logout' %}" class="text-red-400 hover:text-red-600">Выход</a></li>

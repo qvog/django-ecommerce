@@ -79,8 +79,9 @@ class ProductSize(models.Model):
     size = models.CharField(max_length=120, choices=CHOOSE_SIZE)
     active = models.BooleanField(default=True)
 
-    def __str__(self):
+    def get_size(self):
         return self.size
+
 
 
 

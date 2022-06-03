@@ -6,8 +6,5 @@ def product(request, slug):
     return render(request, 'product/product.html', {'product': product})
 
 def productsize(request):
-    productsize = Product.objects.all()
+    productsize = ProductSize.objects.all().order_by('size')[:7]
     return render(request, 'product/product.html', {'productsize': productsize})
-
-
-

@@ -20,14 +20,19 @@
                 {{ product.discription }}
             </p>
         {% endif %}
-        
-        <h2>Размер</h2>
+        <div class="mt-3">
+            <h1 class="py-4 text-lg text-black-800 font-semibold">Размер:</h1>
             <select class="form-control">
-                {% for item in productsize.size %}
-                    <option value="{{ item.id }}">{{ item }}</option>
-                {% endfor %} 
-            </select>
+                <option value="xs">XS</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+                <option value="xxxl">XXXL</option>
+            </select>   
 
+        </div>
         <a 
             href="#" 
             class="mt-6 inline-block px-8 py-4 rounded-xl bg-gray-900 text-white hover:bg-black"
@@ -39,4 +44,5 @@
         </a>
     </div>
 </div>
+
 {% endblock %}

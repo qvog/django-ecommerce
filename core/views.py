@@ -12,6 +12,9 @@ def frontpage(request):
 
     return render(request, 'core/frontpage.html', {'products': products})
 
+def aboutus(request):
+    return render(request, 'core/aboutus.html')
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
