@@ -2,7 +2,6 @@ from django import forms
 from django.db import models
 from django.core.files import File
 from django import forms
-from django.forms import ModelForm
 
 from PIL import Image
 from io import BytesIO
@@ -62,25 +61,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
-class ProductSize(models.Model):
-    
-    CHOOSE_SIZE = (
-    ('Extra Small', 'XS'),
-    ('Small', 'S'),
-    ('Medium', 'M'),
-    ('Large', 'L'),
-    ('Extra Large', 'XL'),
-    ('Double Large', 'XXL'),
-    ('Triple Large', 'XXXL'),
-    )
-
-    product = models.ForeignKey(Product, related_name='sizes', on_delete=models.CASCADE)
-    size = models.CharField(max_length=120, choices=CHOOSE_SIZE)
-    active = models.BooleanField(default=True)
-
-    def get_size(self):
-        return self.size
 
 
 

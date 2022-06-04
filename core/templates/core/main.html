@@ -31,20 +31,24 @@
                 </div>
 
                 <div class="menu-right flex items-center space-x-4">
-                        {% if request.user.is_authenticated %}
-                        <a href="{% url 'myaccount' %}" class="text-black hover:text-gray-600">
-                            <h1 class="text-black hover:text-gray-600">{{ user.get_username }}</h1>
-                        </a>
-                        {% else %}
-                        <a href="{% url 'signup' %}" class="text-black hover:text-gray-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                            </svg>
-                        </a>
-                        {% endif %}
-
-                    {% include 'cart/cart_menu.html' %}
-
+                    {% if request.user.is_authenticated %}
+                    <a href="#" class="text-black hover:text-gray-600">
+                        <h1 class="text-black hover:text-gray-600">{{ user.get_username }}</h1>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'signup' %}" class="text-black hover:text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                        </svg>
+                    </a>
+                    {% endif %}
+                    <div
+                        hx-get="{% url 'hx_menu_cart' %}"
+                        hx-trigger="update-menu-cart from:body"
+                        hx-swap="innerHTML"
+                    > 
+                        {% include 'cart/cart_menu.html' %}
+                    </div>
                 </div>
             </div>
         </nav>
