@@ -1,7 +1,9 @@
 
 <div class="products mb-6 flex pr-6" id="cart-item-{{ item.product.id }}">
     <a href="#" class="w-1/4">
+        {% if product.thumbnail %}
         <img class="hover:shadow-lg rounded-xl" src="{{item.product.get_thumbnail}}">
+        {% if endif %}
     </a>
 
     <div class="w-3/4 pl-6">
