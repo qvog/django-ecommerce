@@ -19,8 +19,8 @@
 Установка:
 --
 ```
-$ git clone https://github.com/MisterLenivec/django-online-store.git
-$ cd django-online-store
+$ git clone https://github.com/qvog/django-ecommerce.git
+$ cd django-ecommerce
 $ pip install -r requirements.txt
 ```
 
