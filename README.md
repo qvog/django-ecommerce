@@ -1,4 +1,4 @@
-# django-online-store
+# Django-ecommerce website
 Интернет-магазин на Django
 
 ### Технологии:
