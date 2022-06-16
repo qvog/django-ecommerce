@@ -1,7 +1,10 @@
 settings.py
 
 *.pyc
-/media/
+/media
+
+Dockerfile
+.Dockerfile
 
 .env
 .venv
