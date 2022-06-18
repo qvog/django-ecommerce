@@ -1,9 +1,9 @@
 settings.py
 
 *.pyc
-/media
 
-Dockerfile
+media/
+
 .Dockerfile
 
 .env

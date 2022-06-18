@@ -25,6 +25,7 @@ class Product(models.Model):
     discription = models.TextField(blank=True, null=True)
     price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    image_ondeploy = models.URLField(max_length=200, null=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
     
