@@ -1,11 +1,16 @@
 from pathlib import Path
 import os
+import environ
+
+# Установка локальных переменных
+env = environ.Env()
+environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-8y@)8b7d*u=a6*j81j8z_pohuu_)h1m!m&hht)v%hebrgt&^sh'
+SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['nika-shop.herokuapp.com', '127.0.0.1']
 
@@ -70,9 +75,9 @@ WSGI_APPLICATION = 'vivasonya.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_db',
-        'USER' : 'postgres',
-        'PASSWORD' : '',
+        'NAME': env('DATABASE_NAME'),
+        'USER' : env('DATABASE_USER'),
+        'PASSWORD' : env('DATABASE_PASS'),
         'HOST' : '127.0.0.1',
         'PORT' : '5432',
     }
