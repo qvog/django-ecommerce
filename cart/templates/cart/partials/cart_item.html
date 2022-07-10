@@ -1,9 +1,8 @@
 
 <div class="products mb-6 flex pr-6" id="cart-item-{{ item.product.id }}">
     <a href="#" class="w-1/4">
-        {% if product.thumbnail %}
-        <img class="hover:shadow-lg rounded-xl" src="{{item.product.get_thumbnail}}">
-        {% endif %}
+        <img class="hover:shadow-lg rounded-xl" 
+        src="{% if product.image_ondeploy %}{{ product.image_ondeploy }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}">
     </a>
 
     <div class="w-3/4 pl-6">

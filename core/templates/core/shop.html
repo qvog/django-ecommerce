@@ -21,7 +21,7 @@
 
         <ul class="space-y-2">
             <li><a href="{% url 'shop' %}" class="{% if not category.slug == active_category %}text-black{% else %}text-gray-700{% endif %}">Весь каталог</a></li>
-
+            <!-- Категория товаров из базы данных -->
             {% for category in categories %}
             <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-black{% else %}text-gray-700{% endif %}">{{ category.name }}</a></li>
             {% endfor %}

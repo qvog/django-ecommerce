@@ -13,8 +13,10 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
+#Время существования куки
 SESSION_COOKIE_AGE = 87000
-CART_SESSION_ID = 'cart'
+#ID сессии для объекта 'cart'
+CART_SESSION_ID = 'cart' 
 
 
 INSTALLED_APPS = [

@@ -34,6 +34,7 @@ def signup(request):
 def myaccount(request):
     return render(request, 'core/myaccount.html')
 
+"""Редактирование профиля"""
 @login_required
 def edit_myaccount(request):
     if request.method == 'POST':
@@ -52,17 +53,19 @@ def edit_myaccount(request):
 def shop(request):
     categories = Category.objects.all()
     products = Product.objects.all()
-
-    active_category = request.GET.get('category', '')
     
+    """Активная категория (Категория, на которой находится пользователь) """
+    active_category = request.GET.get('category', '')
+
     if active_category:
         products = products.filter(category__slug=active_category) 
 
     query = request.GET.get('query', '')
-    
+    """Поиск товаров по названию (В навигации по сайту)"""
     if query:
         products = products.filter(Q(name__icontains=query) | Q(discription__icontains=query))
 
+    """Отображение на странице элементов из бд"""
     context = {
         'categories': categories,
         'products': products,

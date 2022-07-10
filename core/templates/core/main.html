@@ -32,7 +32,7 @@
 
                 <div class="menu-right flex items-center space-x-4">
                     {% if request.user.is_authenticated %}
-                    <a href="#" class="text-black hover:text-gray-600">
+                    <a href="{% url 'myaccount' %}" class="text-black hover:text-gray-600">
                         <h1 class="text-black hover:text-gray-600">{{ user.get_username }}</h1>
                     </a>
                     {% else %}
