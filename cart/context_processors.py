@@ -1,5 +1,5 @@
 from .cart import Cart
 
-"""Для глобального взаимодействия с новым классом"""
 def cart(request):
+    """Для глобального взаимодействия с новым классом"""
     return {'cart': Cart(request)}

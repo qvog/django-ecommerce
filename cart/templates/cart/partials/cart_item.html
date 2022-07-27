@@ -1,7 +1,8 @@
 
 <div class="products mb-6 flex pr-6" id="cart-item-{{ item.product.id }}">
     <a href="#" class="w-1/4">
-        <img class="hover:shadow-lg rounded-xl" 
+        <img 
+        class="hover:shadow-lg rounded-xl" 
         src="{% if product.image_ondeploy %}{{ product.image_ondeploy }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}">
     </a>
 

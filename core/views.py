@@ -34,9 +34,9 @@ def signup(request):
 def myaccount(request):
     return render(request, 'core/myaccount.html')
 
-"""Редактирование профиля"""
 @login_required
 def edit_myaccount(request):
+    """Редактирование профиля"""
     if request.method == 'POST':
         
         user = request.user

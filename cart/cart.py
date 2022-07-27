@@ -3,8 +3,9 @@ from django.conf import settings
 from product.models import Product
 
 class Cart(object):
-    """Инициализация сессии и проверка на существование корзины"""
+    
     def __init__(self, request):
+        """Инициализация сессии и проверка на существование корзины"""
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
 
@@ -13,8 +14,8 @@ class Cart(object):
 
         self.cart = cart #Для дальнейшего использования в других методах этого класса
 
-    """Цикл для доступа к Product из бд и увелечение стоимости в соответствии с кол-во продукта"""
     def __iter__(self):
+        """Цикл для доступа к Product из бд и увелечение стоимости в соответствии с кол-во продукта"""
         for prod in self.cart.keys():
             self.cart[str(prod)]['product'] = Product.objects.get(pk=prod)
 
@@ -22,17 +23,19 @@ class Cart(object):
             item['total_price'] = int(item['product'].price * item['quantity'])
 
             yield item
-    """Для измерения кол-во предметов в корзине"""
+
     def __len__(self):
+        """Для измерения кол-во предметов в корзине"""
         return sum(item['quantity'] for item in self.cart.values())
 
-    """Обновление сеанса для пользователя, при редактировании корзины"""
     def save(self):
+        """Обновление сеанса для пользователя, при редактировании корзины"""
         self.session[settings.CART_SESSION_ID] = self.cart
         self.session.modified = True
 
-    """Добавление в корзину """
     def add(self, product_id, quantity=1, update_quantity=False):
+        """Добавление в корзину """
+
         product_id = str(product_id)
 
         if product_id not in self.cart:
@@ -51,8 +54,8 @@ class Cart(object):
             del self.cart[product_id]
             self.save
 
-    """Получение всей стоимости корзины"""
     def get_total_cost(self):
+        """Получение всей стоимости корзины"""
         for prod in self.cart.keys():
             self.cart[str(prod)]['product'] = Product.objects.get(pk=prod)
 

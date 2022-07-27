@@ -6,8 +6,8 @@ from django import forms
 from PIL import Image
 from io import BytesIO
 
-"""Категория товаров"""
 class Category(models.Model):
+    """Категория товаров"""
     name = models.CharField(max_length=255)
     slug = models.SlugField()
 
@@ -17,7 +17,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-"""Товар"""
 class Product(models.Model):
 
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
@@ -45,8 +44,8 @@ class Product(models.Model):
             else:
                 return 'https://via.placeholder.com/240x240x.jpg'
 
-    """Автоматическое создание маленького изображения, после загрузки обычного"""
     def make_thumbnail(self, image, size=(300, 300)):
+        """Автоматическое создание маленького изображения, после загрузки обычного"""
         img = Image.open(image)
         img.convert('RGB')
         img.thumbnail(size)
