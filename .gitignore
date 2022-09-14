@@ -4,18 +4,10 @@
 *.pyc
 __pycache__/
 local_settings.py
-media
-media/
 
 media/
-
 
 .Dockerfile
 
 .env
-.venv
 env/
-venv/
-ENV/
-env.bak/
-venv.bak/
