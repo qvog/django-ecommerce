@@ -8,15 +8,18 @@ environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = "SECRET_KEY=47p-1q#wvl2cj$2!hm%l58)xd-gd3)!jtj)*e^pb73r+v6f9bn"
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
+
+STRIPE_API_KEY_PUB = 'pk_test_51MRDWxGGtFrkfX6fk7pHGrOmKTA8BaooAlw8050ZyLzbtFc60A5lR159MsOUvrqNFN8XoutRPHOK9N6uzVOyrn5L00vo1f0noh'
+STRIPE_API_KEY_SEC = 'sk_test_51MRDWxGGtFrkfX6fbD0fE6MKKEZtrufsGeWu7IbuXalJaf3RpWoNZcnnR6yCYHSPDBIHLjNwPi0uchWSOZTAsoGw00jedLpWOf'
 
 #Время существования куки
 SESSION_COOKIE_AGE = 87000
@@ -31,10 +34,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'whitenoise.runserver_nostatic',
+
     'core',
     'product',
     'cart',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -75,9 +81,9 @@ WSGI_APPLICATION = 'vivasonya.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DATABASE_NAME'),
-        'USER' : env('DATABASE_USER'),
-        'PASSWORD' : env('DATABASE_PASS'),
+        'NAME': 'django_db',
+        'USER' : 'postgres',
+        'PASSWORD' : 'dancer',
         'HOST' : '127.0.0.1',
         'PORT' : '5432',
     }

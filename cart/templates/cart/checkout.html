@@ -63,8 +63,120 @@
             <span>{{ cart.get_total_cost }} руб</span>
         </div>
 
-        <a href="https://vk.com/real36one" class="inline-block px-8 py-4 rounded-xl bg-gray-800 hover:bg-black text-white">Потвердить оплату</a>
+        <button
+        onclick="buy(event)"
+        class="inline-block px-8 py-4 rounded-xl bg-gray-900 hover:bg-black text-white"
+    >
+        Подтвердить оплату
+    </button>
     </div>
 </div>
+
+{% endblock %}
+
+{% block scripts %} 
+<script type="application/javascript" src="https://js.stripe.com/v3/"></script>
+<script>
+    let el = document.querySelector('#errors')
+
+    function validateForm(data) {
+        let errors = []
+
+        if (data.first_name === ''){
+            errors.push('Введите ваше имя')
+        }
+
+        if (data.last_name === ''){
+            errors.push('Введите вашу фамилию')
+        }
+
+        if (data.email === ''){
+            errors.push('Введите адресс электронной почты')
+        }
+
+        if (data.phone === ''){
+            errors.push('Введите ваш номер телефона')
+        }
+
+        if (data.address === '') {
+            errors.push('Введите адресс')
+        }
+
+        if (data.zipcode === '') {
+            errors.push('Введите номер вашего почтового отделения')
+        }
+
+        if (data.city === '') {
+            errors.push('Введите ваш город')
+        }
+
+        if (errors.length > 0) {
+            let html = '<ul>';
+            
+            errors.forEach((error) => {
+                html += '<li>' + error + '</li>';
+            })
+
+            el.innerHTML = html + '</ul>';
+        } else {
+            el.innerHTML = '';
+        }
+
+        return errors
+
+        
+    }
+
+    function buy(event) {
+
+        event.preventDefault()
+
+        let data = {
+            'first_name': document.querySelector('input[name=first_name]').value,
+            'last_name': document.querySelector('input[name=last_name]').value,
+            'email': document.querySelector('input[name=email]').value,
+            'phone': document.querySelector('input[name=phone]').value,
+            'address': document.querySelector('input[name=address]').value,
+            'zipcode': document.querySelector('input[name=zipcode]').value,
+            'city': document.querySelector('input[name=city]').value,
+        }
+
+        let errors = validateForm(data)
+
+        if (errors.length) {
+            console.log('Errors', errors)
+        } else {
+            var stripe = Stripe('{{ pub_key }}')
+
+            fetch('/order/start_order/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data)
+            })
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function(session) {
+                return stripe.redirectToCheckout({ sessionId: session.session.id })
+            })
+            .then(function(result) {
+                if (result.error) {
+                    alert(result.error.message)
+                }
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+        }
+
+        return false
+    }
+</script>
+
+
 
 {% endblock %}
