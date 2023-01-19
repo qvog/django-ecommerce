@@ -8,7 +8,7 @@ environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "SECRET_KEY=47p-1q#wvl2cj$2!hm%l58)xd-gd3)!jtj)*e^pb73r+v6f9bn"
+SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = True
 
@@ -18,8 +18,8 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
-STRIPE_API_KEY_PUB = 'pk_test_51MRDWxGGtFrkfX6fk7pHGrOmKTA8BaooAlw8050ZyLzbtFc60A5lR159MsOUvrqNFN8XoutRPHOK9N6uzVOyrn5L00vo1f0noh'
-STRIPE_API_KEY_SEC = 'sk_test_51MRDWxGGtFrkfX6fbD0fE6MKKEZtrufsGeWu7IbuXalJaf3RpWoNZcnnR6yCYHSPDBIHLjNwPi0uchWSOZTAsoGw00jedLpWOf'
+STRIPE_API_KEY_PUB = env('STRIPE_API_KEY_PUB')
+STRIPE_API_KEY_SEC = env('STRIPE_API_KEY_SEC')
 
 #Время существования куки
 SESSION_COOKIE_AGE = 87000
@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'vivasonya.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_db',
-        'USER' : 'postgres',
-        'PASSWORD' : 'dancer',
-        'HOST' : '127.0.0.1',
-        'PORT' : '5432',
+        'NAME': env('NAME'),
+        'USER' : env('BDNAME'),
+        'PASSWORD' : env('PASSWORD'),
+        'HOST' : env('HOST'),
+        'PORT' : env('PORT'),
     }
 }
 
