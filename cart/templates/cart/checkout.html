@@ -34,7 +34,7 @@
 
                     <div class="w-1/2 mb-4">
                         <label class="inline-block mb-2">Город/</label>
-                        <input name="place" type="text" class="w-full p-5 rounded-xl">
+                        <input name="city" type="text" class="w-full p-5 rounded-xl">
                     </div>
                 </div>
             </div>
@@ -64,19 +64,20 @@
         </div>
 
         <button
-        onclick="buy(event)"
-        class="inline-block px-8 py-4 rounded-xl bg-gray-900 hover:bg-black text-white"
-    >
-        Подтвердить оплату
-    </button>
+            onclick="Ultrabuy(event)"
+            class="inline-block px-8 py-4 rounded-xl bg-gray-900 hover:bg-black text-white"
+        >
+            Подтвердить оплату
+        </button>
+
     </div>
 </div>
-
 {% endblock %}
 
 {% block scripts %} 
 <script type="application/javascript" src="https://js.stripe.com/v3/"></script>
 <script>
+
     let el = document.querySelector('#errors')
 
     function validateForm(data) {
@@ -109,25 +110,11 @@
         if (data.city === '') {
             errors.push('Введите ваш город')
         }
-
-        if (errors.length > 0) {
-            let html = '<ul>';
-            
-            errors.forEach((error) => {
-                html += '<li>' + error + '</li>';
-            })
-
-            el.innerHTML = html + '</ul>';
-        } else {
-            el.innerHTML = '';
-        }
-
         return errors
-
         
     }
 
-    function buy(event) {
+    function Ultrabuy(event) {
 
         event.preventDefault()
 
@@ -174,9 +161,7 @@
         }
 
         return false
+
     }
 </script>
-
-
-
 {% endblock %}
