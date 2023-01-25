@@ -2,8 +2,9 @@ from unicodedata import name
 from urllib import response
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
+
 
 
 from .cart import Cart
@@ -48,13 +49,18 @@ def update_cart(request, product_id, action):
             'quantity': quantity, 
         }
 
+        response = render(request, 'cart/partials/cart_item.html', {'item': item})
+        response['HX-Trigger'] = 'update-menu-cart'
+
+    elif action == 'remove':
+        cart.remove(product)
+        response = render(request, 'cart/partials/cart_item.html')
+        response['HX-Trigger'] = 'update-menu-cart'
     else:
         item = None
 
-    response = render(request, 'cart/partials/cart_item.html', {'item': item})
-    response['HX-Trigger'] = 'update-menu-cart'
-
     return response
+
 
 @login_required
 def checkout(request):

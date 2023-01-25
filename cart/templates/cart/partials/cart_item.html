@@ -1,4 +1,4 @@
-
+{% if item %}
 <div class="products mb-6 flex pr-6" id="cart-item-{{ item.product.id }}">
     <a href="#" class="w-1/4">
         <img 
@@ -11,10 +11,15 @@
             <a href="#" class="text-lg">{{ item.product.name }}</a>
 
             <span class="mb-6 pt-1 text-black">{{ item.total_price }} | ₽</span>
+            <a 
+                class="mb-6 pt-1 text-red-400 hover:text-red-600"
+                hx-get="{% url 'update_cart' item.product.id 'remove' %}"
+                hx-target="#cart-item-{{ item.product.id }}"
+                hx-swap="outerHTML"
+            >
+                X
+            </a>
         </div>
-
-        <hr>
-
         <div class="quantity mt-6 flex items-center space-x-4">
             <a 
                 class="p-3 bg-gray-100"
@@ -36,3 +41,4 @@
         </div>
     </div>
 </div>
+{% endif %}
