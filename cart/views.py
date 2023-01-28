@@ -1,11 +1,6 @@
-from unicodedata import name
-from urllib import response
-
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render
 from django.conf import settings
-
-
 
 from .cart import Cart
 

@@ -22,16 +22,13 @@
         {% endif %}
         <div class="mt-3">
             <h1 class="py-4 text-lg text-black-800 font-semibold">Размер:</h1>
-            <select class="form-control">
-                <option value="xs">XS</option>
-                <option value="s">S</option>
-                <option value="m">M</option>
-                <option value="l">L</option>
-                <option value="xl">XL</option>
-                <option value="xxl">XXL</option>
-                <option value="xxxl">XXXL</option>
-            </select>   
-
+                <select name="Size"
+                {% for i in product.size.all %} 
+                hx-get="{% url 'get_size' 'Size' %}" 
+                hx-target="#menu-cart-button">
+                <option value="Size">{{ i }}</option>
+                {% endfor %}
+                </select>
         </div>
         <a 
             href="#" 

@@ -17,12 +17,22 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class ProductSize(models.Model):
+    sizeinfo = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name_plural = 'Product Sizes'
+
+    def __str__(self):
+        return self.sizeinfo
+
 class Product(models.Model):
 
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     discription = models.TextField(blank=True, null=True)
+    size = models.ManyToManyField(ProductSize)
     price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     image_ondeploy = models.URLField(max_length=200, null=True)
