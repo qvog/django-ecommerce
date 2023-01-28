@@ -37,4 +37,3 @@ python manage.py runserver
 > Используйте адрес: http://127.0.0.1:8000/ (Для проверки) 
 
 
-Пример [https://nika-shop.herokuapp.com/]
