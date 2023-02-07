@@ -1,25 +1,20 @@
 from pathlib import Path
 import os
-import environ
-
-# Установка локальных переменных
-env = environ.Env()
-environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = '47p-1qwvl2cj$2!hm%l58)xd-gd3)!jtj)*e^pb73r+v6f9bn'
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
-STRIPE_API_KEY_PUB = env('STRIPE_API_KEY_PUB')
-STRIPE_API_KEY_SEC = env('STRIPE_API_KEY_SEC')
+STRIPE_API_KEY_PUB = os.getenv('STRIPE_API_KEY_PUB')
+STRIPE_API_KEY_SEC = os.getenv('STRIPE_API_KEY_SEC')
 
 #Время существования куки
 SESSION_COOKIE_AGE = 87000
@@ -81,11 +76,11 @@ WSGI_APPLICATION = 'vivasonya.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('NAME'),
-        'USER' : env('BDNAME'),
-        'PASSWORD' : env('PASSWORD'),
-        'HOST' : env('HOST'),
-        'PORT' : env('PORT'),
+        'NAME': 'django_db',
+        'USER' :  'postgres',
+        'PASSWORD' : 'dancer',
+        'HOST' :  'viva_postgres',
+        'PORT' : '5432',
     }
 }
 
@@ -115,11 +110,11 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
