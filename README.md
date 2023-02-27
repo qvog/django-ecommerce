@@ -4,6 +4,7 @@
 ### Технологии:
 - Django 4.0.2
 - Python 3.10.4
+- Docker
 - HTML, CSS (Tailwind, HTMX)
 - Postgresql
 
