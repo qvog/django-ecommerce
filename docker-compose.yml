@@ -14,12 +14,11 @@ services:
     depends_on:
       - viva_postgres
     volumes:
-      - static_volume:/srv/static
-      - media_volume:/srv/media
+      - static_volume:/var/lib/django-static
     env_file:
       - .env
     command: >
-      bash -c "./manage.py collectstatic --noinput && ./manage.py migrate  && gunicorn -b 0.0.0.0:8000 vivasonya.wsgi:application"
+      bash -c "./manage.py migrate  && gunicorn -b 0.0.0.0:8000 vivasonya.wsgi:application"
   nginx:
     build:
       dockerfile: ./Dockerfile
@@ -27,14 +26,12 @@ services:
     container_name: viva_nginx
     image: viva_nginx
     volumes:
-      - static_volume:/srv/static
-      - media_volume:/srv/media
+      - static_volume:/var/lib/django-static
     depends_on:
       - viva_sonya
     ports:
-      - "80"
+      - "${NGINX_EXTERNAL_PORT}:80"
 
 volumes:
   static_volume:
-  media_volume:
 

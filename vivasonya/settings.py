@@ -7,7 +7,7 @@ SECRET_KEY = '47p-1qwvl2cj$2!hm%l58)xd-gd3)!jtj)*e^pb73r+v6f9bn'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
@@ -76,11 +76,12 @@ WSGI_APPLICATION = 'vivasonya.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_db',
-        'USER' :  'postgres',
-        'PASSWORD' : 'dancer',
-        'HOST' :  'viva_postgres',
-        'PORT' : '5432',
+        'HOST': os.getenv('POSTGRES_HOST', '127.0.0.1'),
+        'PORT': os.getenv('POSTGRES_PORT', 5432),
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'dancer'),
+        'NAME': os.getenv('POSTGRES_NAME', "db01")
+
     }
 }
 
