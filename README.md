@@ -36,4 +36,22 @@ python manage.py runserver
 
 > Используйте адрес: http://127.0.0.1:8000/ (Для проверки) 
 
+## Docker установка:
+
+1. Build containers via `docker-compose`:
+
+    ```bash
+    docker-compose build
+    ```
+
+2. Start containers:
+
+    ```bash
+    docker-compose up
+    ```
+
+3. > Используйте адрес: http://127.0.0.1:8000/ (Для проверки) 
+
+
+
 
