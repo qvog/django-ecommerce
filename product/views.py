@@ -9,7 +9,7 @@ def get_size(request, product_size):
     size = Product.objects.get(pk=product_size)
     
     if request.POST:
-        sizeid = request.POST.get('Size')
-        print('asdasda', sizeid)
+        
+        pass
 
     return render(request, 'product/product.html')

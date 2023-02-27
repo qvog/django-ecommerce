@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  viva_postgres:
+    image: postgres:15
+    container_name: viva_postgres
+    volumes:
+      - ~/.pg/pg_data/srv:/var/lib/postgresql/data
+    env_file:
+      - .env
+  viva_sonya:
+    image: django-ecommerce:latest
+    container_name: django-ecommerce
+    depends_on:
+      - viva_postgres
+    volumes:
+      - static_volume:/var/lib/django-static
+    env_file:
+      - .env
+    command: >
+      bash -c "./manage.py migrate  && gunicorn -b 0.0.0.0:8000 vivasonya.wsgi:application"
+  nginx:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./docker/nginx/
+    container_name: viva_nginx
+    image: viva_nginx
+    volumes:
+      - static_volume:/var/lib/django-static
+    depends_on:
+      - viva_sonya
+    ports:
+      - "${NGINX_EXTERNAL_PORT}:80"
+
+volumes:
+  static_volume:
+
